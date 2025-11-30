@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ticker Control</title>
+</head>
+<body>
+  <h2>Edit Ticker Messages</h2>
+  <textarea id="messages" rows="10" cols="50"></textarea><br>
+  <button id="save">Save</button>
+
+  <script>
+    async function loadMessages() {
+      const response = await fetch('ticker.json');
+      const data = await response.json();
+      document.getElementById('messages').value = data.messages.join('\n');
+    }
+
+    async function saveMessages() {
+      const textarea = document.getElementById('messages');
+      const lines = textarea.value.split('\n').filter(line => line.trim() !== '');
+      const newData = { messages: lines };
+      
+      // Since static GitHub Pages cannot write files,
+      // you need to push to GitHub to update ticker.json
+      alert("Copy the following JSON and replace ticker.json in the repo:\n" + JSON.stringify(newData, null, 2));
+    }
+
+    document.getElementById('save').addEventListener('click', saveMessages);
+    window.addEventListener('load', loadMessages);
+  </script>
+</body>
+</html>
