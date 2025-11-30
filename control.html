@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ticker Control</title>
+  <meta charset="UTF-8">
+  <title>Control Ticker</title>
 </head>
 <body>
   <h2>Edit Ticker Messages</h2>
-  <textarea id="messages" rows="10" cols="50"></textarea><br>
+  <p>Enter one message per line:</p>
+  <textarea id="messages" rows="10" cols="60"></textarea><br>
   <button id="save">Save</button>
 
   <script>
@@ -15,14 +17,14 @@
       document.getElementById('messages').value = data.messages.join('\n');
     }
 
-    async function saveMessages() {
+    function saveMessages() {
       const textarea = document.getElementById('messages');
       const lines = textarea.value.split('\n').filter(line => line.trim() !== '');
       const newData = { messages: lines };
       
-      // Since static GitHub Pages cannot write files,
-      // you need to push to GitHub to update ticker.json
-      alert("Copy the following JSON and replace ticker.json in the repo:\n" + JSON.stringify(newData, null, 2));
+      // GitHub Pages cannot write files directly
+      // Copy the JSON below and replace ticker.json in your repo
+      alert("Copy this JSON and update ticker.json in your repository:\n\n" + JSON.stringify(newData, null, 2));
     }
 
     document.getElementById('save').addEventListener('click', saveMessages);
