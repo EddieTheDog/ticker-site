@@ -1,13 +1,13 @@
 body {
   margin: 0;
-  background: transparent; /* OBS will see only the ticker */
+  background: transparent; /* OBS only sees the ticker */
   overflow: hidden;
 }
 .ticker-container {
   width: 100%;
   overflow: hidden;
   position: relative;
-  height: 40px; /* Adjust as needed */
+  height: 40px; /* Adjust height for your ticker */
 }
 .ticker {
   display: inline-block;
